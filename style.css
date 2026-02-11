@@ -194,6 +194,20 @@ section h2 {
     font-weight: 600;
     margin-bottom: 1rem;
     letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.project-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.project-link:hover {
+    color: var(--accent);
 }
 
 .project-content p {
