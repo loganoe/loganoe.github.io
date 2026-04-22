@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Logan Vimalaraj</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            :root {
+                --bg: #0a0a0b;
+                --bg-elevated: #131316;
+                --border: rgba(255, 255, 255, 0.08);
+                --border-hover: rgba(255, 255, 255, 0.18);
+                --text: #f5f5f7;
+                --text-dim: #a1a1aa;
+                --text-faint: #71717a;
+                --accent: #7c5cff;
+                --accent-2: #00d4ff;
+                --gradient-1: linear-gradient(135deg, #7c5cff 0%, #00d4ff 100%);
+                --gradient-2: linear-gradient(135deg, #ff6b9d 0%, #7c5cff 100%);
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family:
+                    "Inter",
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    sans-serif;
+                color: var(--text);
+                background-color: var(--bg);
+                overflow-x: hidden;
+                line-height: 1.6;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            /* Animated background */
+            body::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background:
+                    radial-gradient(
+                        circle at 20% 30%,
+                        rgba(124, 92, 255, 0.15) 0%,
+                        transparent 40%
+                    ),
+                    radial-gradient(
+                        circle at 80% 70%,
+                        rgba(0, 212, 255, 0.1) 0%,
+                        transparent 40%
+                    ),
+                    radial-gradient(
+                        circle at 50% 50%,
+                        rgba(255, 107, 157, 0.05) 0%,
+                        transparent 50%
+                    );
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            /* Grid overlay */
+            body::after {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image:
+                    linear-gradient(
+                        rgba(255, 255, 255, 0.015) 1px,
+                        transparent 1px
+                    ),
+                    linear-gradient(
+                        90deg,
+                        rgba(255, 255, 255, 0.015) 1px,
+                        transparent 1px
+                    );
+                background-size: 60px 60px;
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            /* Hero / Namecard */
+            #namecard {
+                position: relative;
+                width: 100vw;
+                height: 100vh;
+                min-height: 700px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                z-index: 1;
+                overflow: hidden;
+            }
+
+            #namecard::before {
+                content: "";
+                position: absolute;
+                width: 800px;
+                height: 800px;
+                border-radius: 50%;
+                background: radial-gradient(
+                    circle,
+                    rgba(124, 92, 255, 0.25) 0%,
+                    transparent 60%
+                );
+                filter: blur(60px);
+                animation: float 12s ease-in-out infinite;
+            }
+
+            #namecard::after {
+                content: "";
+                position: absolute;
+                width: 600px;
+                height: 600px;
+                border-radius: 50%;
+                background: radial-gradient(
+                    circle,
+                    rgba(0, 212, 255, 0.2) 0%,
+                    transparent 60%
+                );
+                filter: blur(60px);
+                animation: float 15s ease-in-out infinite reverse;
+                top: 60%;
+                left: 60%;
+            }
+
+            @keyframes float {
+                0%,
+                100% {
+                    transform: translate(0, 0) scale(1);
+                }
+                33% {
+                    transform: translate(50px, -30px) scale(1.05);
+                }
+                66% {
+                    transform: translate(-30px, 50px) scale(0.95);
+                }
+            }
+
+            .hero-content {
+                position: relative;
+                z-index: 2;
+                text-align: center;
+                padding: 0 20px;
+            }
+
+            .hero-tag {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 8px 16px;
+                background: rgba(255, 255, 255, 0.04);
+                border: 1px solid var(--border);
+                border-radius: 100px;
+                font-size: 0.85rem;
+                color: var(--text-dim);
+                margin-bottom: 32px;
+                backdrop-filter: blur(10px);
+                font-family: "JetBrains Mono", monospace;
+            }
+
+            .hero-tag .dot {
+                width: 8px;
+                height: 8px;
+                background: #4ade80;
+                border-radius: 50%;
+                box-shadow: 0 0 12px #4ade80;
+                animation: pulse 2s ease-in-out infinite;
+            }
+
+            @keyframes pulse {
+                0%,
+                100% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0.5;
+                }
+            }
+
+            #name {
+                font-family: "Space Grotesk", sans-serif;
+                font-size: clamp(3rem, 10vw, 7rem);
+                font-weight: 700;
+                letter-spacing: -0.04em;
+                line-height: 1;
+                background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 24px;
+            }
+
+            .hero-subtitle {
+                font-size: clamp(1rem, 2vw, 1.25rem);
+                color: var(--text-dim);
+                margin-bottom: 40px;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #email {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                padding: 14px 28px;
+                background: rgba(255, 255, 255, 0.04);
+                border: 1px solid var(--border);
+                border-radius: 100px;
+                color: var(--text) !important;
+                text-decoration: none;
+                font-size: 1rem;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(10px);
+                font-family: "JetBrains Mono", monospace;
+            }
+
+            #email:hover {
+                background: rgba(255, 255, 255, 0.08);
+                border-color: var(--border-hover);
+                transform: translateY(-2px);
+                box-shadow: 0 10px 40px rgba(124, 92, 255, 0.2);
+            }
+
+            #email::before {
+                content: "✉";
+                font-size: 1.1rem;
+            }
+
+            .scroll-indicator {
+                position: absolute;
+                bottom: 40px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: var(--text-faint);
+                font-size: 0.75rem;
+                letter-spacing: 0.2em;
+                font-family: "JetBrains Mono", monospace;
+                text-transform: uppercase;
+                animation: bounce 2s ease-in-out infinite;
+                z-index: 2;
+            }
+
+            @keyframes bounce {
+                0%,
+                100% {
+                    transform: translate(-50%, 0);
+                    opacity: 0.6;
+                }
+                50% {
+                    transform: translate(-50%, 8px);
+                    opacity: 1;
+                }
+            }
+
+            /* About */
+            #about {
+                position: relative;
+                z-index: 1;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 120px 40px 80px;
+            }
+
+            .about-grid {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                gap: 80px;
+                align-items: start;
+                margin-bottom: 160px;
+            }
+
+            #aboutheader {
+                font-family: "Space Grotesk", sans-serif;
+                font-size: clamp(2.5rem, 5vw, 4rem);
+                font-weight: 600;
+                letter-spacing: -0.03em;
+                line-height: 1;
+                background: linear-gradient(135deg, #ffffff 0%, #7c5cff 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            #aboutcopy {
+                font-size: 1.25rem;
+                line-height: 1.7;
+                color: var(--text-dim);
+                font-weight: 300;
+            }
+
+            /* Projects */
+            #myprojectsheader {
+                font-family: "Space Grotesk", sans-serif;
+                font-size: clamp(2.5rem, 5vw, 4rem);
+                font-weight: 600;
+                letter-spacing: -0.03em;
+                margin-bottom: 60px;
+                background: linear-gradient(135deg, #ffffff 0%, #00d4ff 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .agebracket {
+                font-family: "JetBrains Mono", monospace;
+                font-size: 0.9rem;
+                font-weight: 500;
+                color: var(--accent-2);
+                margin: 40px 0 32px;
+                padding-left: 16px;
+                border-left: 3px solid var(--accent);
+                text-transform: uppercase;
+                letter-spacing: 0.15em;
+            }
+
+            .agebracket::before {
+                content: "AGE ";
+            }
+
+            .projects-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+                gap: 24px;
+            }
+
+            .projectcard {
+                position: relative;
+                background: linear-gradient(
+                    180deg,
+                    rgba(255, 255, 255, 0.04) 0%,
+                    rgba(255, 255, 255, 0.01) 100%
+                );
+                padding: 32px;
+                border: 1px solid var(--border);
+                border-radius: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                overflow: hidden;
+                backdrop-filter: blur(20px);
+            }
+
+            .projectcard::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 1px;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.2),
+                    transparent
+                );
+                opacity: 0;
+                transition: opacity 0.4s;
+            }
+
+            .projectcard:hover {
+                transform: translateY(-4px);
+                border-color: var(--border-hover);
+                background: linear-gradient(
+                    180deg,
+                    rgba(255, 255, 255, 0.06) 0%,
+                    rgba(255, 255, 255, 0.02) 100%
+                );
+                box-shadow:
+                    0 20px 60px rgba(0, 0, 0, 0.5),
+                    0 0 40px rgba(124, 92, 255, 0.1);
+            }
+
+            .projectcard:hover::before {
+                opacity: 1;
+            }
+
+            .title {
+                font-family: "Space Grotesk", sans-serif;
+                font-size: 1.75rem;
+                font-weight: 600;
+                letter-spacing: -0.02em;
+                color: var(--text);
+            }
+
+            .description {
+                font-size: 0.95rem;
+                line-height: 1.7;
+                color: var(--text-dim);
+                font-weight: 300;
+            }
+
+            .projectcard video,
+            .projectcard img {
+                width: 100%;
+                height: auto;
+                border-radius: 12px;
+                margin-top: auto;
+                border: 1px solid var(--border);
+            }
+
+            .white {
+                color: var(--accent-2);
+                text-decoration: none;
+                border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+                transition: all 0.2s;
+            }
+
+            .white:hover {
+                color: #ffffff;
+                border-bottom-color: var(--accent-2);
+            }
+
+            .closing-note {
+                margin-top: 80px;
+                padding: 32px;
+                text-align: center;
+                color: var(--text-faint);
+                font-style: italic;
+                font-size: 1rem;
+                border-top: 1px solid var(--border);
+            }
+
+            @media (max-width: 768px) {
+                .about-grid {
+                    grid-template-columns: 1fr;
+                    gap: 32px;
+                    margin-bottom: 100px;
+                }
+
+                #about {
+                    padding: 80px 24px 60px;
+                }
+
+                .projects-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .projectcard {
+                    padding: 24px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="namecard">
+            <div class="hero-content">
+                <div class="hero-tag">
+                    <span class="dot"></span>
+                    <span>Available for collaboration</span>
+                </div>
+                <h1 id="name">Logan Vimalaraj</h1>
+                <p class="hero-subtitle">
+                    Mechatronics &amp; software developer building the future,
+                    one robot at a time.
+                </p>
+                <a id="email" href="mailto:vimalarajlogan@gmail.com"
+                    >vimalarajlogan@gmail.com</a
+                >
+            </div>
+            <div class="scroll-indicator">Scroll ↓</div>
+        </div>
+
+        <div id="about">
+            <div class="about-grid">
+                <h2 id="aboutheader">About me</h2>
+                <p id="aboutcopy">
+                    13 year old mechatronics and software developer based in
+                    Reno, Nevada. Currently a student at the Davidson Academy. I
+                    use my cross-domain knowledge to build projects that
+                    encompass robotics hardware, low-level firmware, and
+                    fullstack software simultaniously.
+                </p>
+            </div>
+
+            <h2 id="myprojectsheader">My projects</h2>
+            <h3 class="agebracket">13:</h3>
+
+            <div class="projects-grid">
+                <div class="projectcard">
+                    <h2 class="title">DUM-E</h2>
+                    <p class="description">
+                        In progress: A general purpose home assistant robot.
+                        DUM-E takes long-horizon text commands (for example
+                        "Clean this room"), uses a unique LLM+pointer+SLAM to
+                        break the task into smaller steps and also directly
+                        control the drivebase, then uses a VLA model for precise
+                        control over the arm.
+                    </p>
+                </div>
+
+                <div class="projectcard">
+                    <h2 class="title">Robot Arm v6.5</h2>
+                    <p class="description">
+                        My most sophisticated robot arm yet, designed to be a
+                        part of DUM-E. Built on the v6 foundation, this robot
+                        arm features 5 DOFs (+gripper), and a elbow joint driven
+                        by fiberglass-reinforced GT2 belt, moving weight away
+                        from the elbow and reducing load on the shoulder. The
+                        wrist is powered by differential helical bevel gears,
+                        allowing me to belt drive the wrist and use the wrist
+                        motors as counterweights for the payload. Uses NEMA 17s
+                        for all degrees of freedom other than gripper. The
+                        actuators use the same 5:1 stackable planetary gearbox I
+                        designed for the v6 arm, but the elbow joint gained an
+                        additional 3:1 reduction via pulleys.
+                    </p>
+                    <video src="output.mp4" onclick="play()"></video>
+                </div>
+
+                <div class="projectcard">
+                    <h2 class="title">Robot Arm v6</h2>
+                    <p class="description">
+                        While being smaller than the v5 arm, this arm has a
+                        significantly larger torque buffer, aiming for
+                        reliability and repetability over a larger work area.
+                        This arm boasts 3 DOFs, with plans to upgrade to 5 DOFs
+                        in v6.5. Built with aluminium extrusion and NEMA 17s. As
+                        opposed to previous arms, all joints use a stackable 5:1
+                        planetary gearbox I designed. The shoulder and base use
+                        2 gearboxes stacked on top of each other to get a 25:1
+                        reduction.
+                    </p>
+                    <img src="v6arm.png" alt="Robot Arm v6" />
+                </div>
+
+                <div class="projectcard">
+                    <h2 class="title">Self-playing chessboard</h2>
+                    <p class="description">
+                        Collaboration with Siddhartha Hiremath. This board uses
+                        a cartesian gantry powered by NEMA 17 motors, as well as
+                        a magnet on a linear actuator, to autonomously play a
+                        physical game of chess against the opponent.
+                    </p>
+                </div>
+
+                <div class="projectcard">
+                    <h2 class="title">Robot arm v5</h2>
+                    <p class="description">
+                        My first arm to use aluminium extrusion as the arm
+                        segments. The added rigidity of aluminium led me to
+                        attempt an extremely large, 800mm total reach arm. To
+                        power the shoulder joint, I used a 64:1 3 stage planetay
+                        gearbox that I designed. The elbow and base were powered
+                        by the 9:1 cycloidal drive I designed.
+                    </p>
+                </div>
+
+                <div class="projectcard">
+                    <h2 class="title">InsightAI</h2>
+                    <p class="description">
+                        Collaboration with Justin Barrata. InsightAI is a
+                        personalized learning platform that uses an LLM
+                        (currently Gemma4) to generate a personalized course for
+                        a user based on a text prompt and a difficulty selector.
+                        Courses include many lessons, each with examples,
+                        sources, and practice problems. Winner of the 2026
+                        Congressional App Challenge for Nevada district #2. View
+                        the
+                        <a
+                            href="https://www.youtube.com/watch?v=CvaFKUh-MBM"
+                            class="white"
+                            >demo video here.</a
+                        >
+                    </p>
+                </div>
+            </div>
+
+            <p class="closing-note">
+                ... This site is in progress, much more of my previous projects
+                will be added soon!
+            </p>
+        </div>
+    </body>
+</html>
