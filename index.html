@@ -281,7 +281,8 @@
             #about {
                 position: relative;
                 z-index: 1;
-                max-width: 1200px;
+                width: min(80vw, 1400px);
+                max-width: 1400px;
                 margin: 0 auto;
                 padding: 120px 40px 80px;
             }
@@ -344,7 +345,7 @@
 
             .projects-grid {
                 display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+                grid-template-columns: repeat(3, minmax(0, 1fr));
                 gap: 24px;
             }
 
@@ -420,7 +421,6 @@
                 width: 100%;
                 height: auto;
                 border-radius: 12px;
-                margin-top: auto;
                 border: 1px solid var(--border);
             }
 
@@ -446,6 +446,12 @@
                 border-top: 1px solid var(--border);
             }
 
+            @media (max-width: 1100px) {
+                .projects-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+            }
+
             @media (max-width: 768px) {
                 .about-grid {
                     grid-template-columns: 1fr;
@@ -454,6 +460,8 @@
                 }
 
                 #about {
+                    width: auto;
+                    max-width: none;
                     padding: 80px 24px 60px;
                 }
 
@@ -530,7 +538,7 @@
                         designed for the v6 arm, but the elbow joint gained an
                         additional 3:1 reduction via pulleys.
                     </p>
-                    <video src="output.mp4" onclick="play()"></video>
+                    <video src="v6_5arm.MOV" muted playsinline onclick="this.play()"></video>
                 </div>
 
                 <div class="projectcard">
@@ -569,6 +577,7 @@
                         gearbox that I designed. The elbow and base were powered
                         by the 9:1 cycloidal drive I designed.
                     </p>
+                    <img src="v5.jpeg">
                 </div>
 
                 <div class="projectcard">
@@ -589,8 +598,42 @@
                         >
                     </p>
                 </div>
+            <div class="projectcard">
+                <h2 class="title">Cycloidal Drive</h2>
+                <p class="description">
+                    A 3d printed 9:1 reduction cycloidal drive for a NEMA 17
+                    stepper I designed in Onshape for my robotic arm actuators.
+                    It uses dual cycloidal disks to cancel out vibrations, and
+                    is fairly compact. View and download the files to make it
+                    yourself
+                    <a
+                        href="https://www.printables.com/model/1528707-91-3d-printed-cycloidal-drive-gearbox-for-nema-17/"
+                        class="white"
+                        >here.</a
+                    >
+                </p>
+                <img src="cycloidaldrive.webp">
             </div>
-
+            <div class="projectcard">
+                <h2 class="title">Robot arm v4</h2>
+                <p class="description">
+                    My first arm to use actuators entirely designed by me. All joints use my custom 9:1 cycloidal drive.
+                </p>
+            </div>
+            <div class="projectcard">
+                <h2 class="title">Pen Plotter v2</h2>
+                <p class="description">
+                    My best pen plotter so far. Instead of using 28BYJ-48 stepper motors, this plotter uses 2 NEMA 17 steppers to control the XY axes (Cartesian motion system). Frame is fully 3d printed.
+                </p>
+                <video src="penplotterv2trimmed.mp4" muted playsinline onclick="this.play()"></video>
+            </div>
+            <div class="projectcard">
+                <h2 class="title">Robot Arm v3</h2>
+                <p class="description">
+                    My first robot arm to use NEMA 17 stepper motors, and my first to use an belt-driven elbow. The actuators use 3:1 planetary reductions (gearboxes are not my own design).
+                </p>
+                <video src="v3.mp4" muted playsinline onclick="this.play()"></video>
+            </div>
             <p class="closing-note">
                 ... This site is in progress, much more of my previous projects
                 will be added soon!
