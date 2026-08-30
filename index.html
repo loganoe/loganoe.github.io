@@ -3,7 +3,70 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Logan Vimalaraj</title>
+        <meta
+            name="description"
+            content="Logan Vimalaraj is a student mechatronics and software developer in Reno, Nevada, building robot arms, autonomous robots, embedded systems, and AI tools."
+        />
+        <meta name="robots" content="index,follow,max-image-preview:large" />
+        <link rel="canonical" href="https://loganoe.github.io/" />
+        <meta name="theme-color" content="#0a0a0b" />
+        <meta property="og:type" content="profile" />
+        <meta property="og:site_name" content="Logan Vimalaraj" />
+        <meta property="og:title" content="Logan Vimalaraj | Robotics &amp; Software Developer" />
+        <meta
+            property="og:description"
+            content="A portfolio of Logan Vimalaraj's robotics, mechatronics, embedded systems, and software projects."
+        />
+        <meta property="og:url" content="https://loganoe.github.io/" />
+        <meta property="og:image" content="https://loganoe.github.io/social-card.jpg" />
+        <meta property="og:image:alt" content="Robotic arm designed by Logan Vimalaraj" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Logan Vimalaraj | Robotics &amp; Software Developer" />
+        <meta
+            name="twitter:description"
+            content="A portfolio of Logan Vimalaraj's robotics, mechatronics, embedded systems, and software projects."
+        />
+        <meta name="twitter:image" content="https://loganoe.github.io/social-card.jpg" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <title>Logan Vimalaraj | Robotics &amp; Software Developer</title>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@graph": [
+                    {
+                        "@type": "WebSite",
+                        "@id": "https://loganoe.github.io/#website",
+                        "url": "https://loganoe.github.io/",
+                        "name": "Logan Vimalaraj",
+                        "description": "The personal portfolio of Logan Vimalaraj, a robotics and software developer.",
+                        "inLanguage": "en-US"
+                    },
+                    {
+                        "@type": "ProfilePage",
+                        "@id": "https://loganoe.github.io/#profile",
+                        "url": "https://loganoe.github.io/",
+                        "name": "Logan Vimalaraj | Robotics & Software Developer",
+                        "isPartOf": { "@id": "https://loganoe.github.io/#website" },
+                        "mainEntity": { "@id": "https://loganoe.github.io/#person" },
+                        "inLanguage": "en-US"
+                    },
+                    {
+                        "@type": "Person",
+                        "@id": "https://loganoe.github.io/#person",
+                        "name": "Logan Vimalaraj",
+                        "alternateName": "loganoe",
+                        "url": "https://loganoe.github.io/",
+                        "description": "Student mechatronics and software developer building robots, embedded systems, and AI tools.",
+                        "jobTitle": "Student mechatronics and software developer",
+                        "homeLocation": {
+                            "@type": "Place",
+                            "name": "Reno, Nevada"
+                        },
+                        "sameAs": ["https://github.com/loganoe"]
+                    }
+                ]
+            }
+        </script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -222,6 +285,29 @@
                 margin-right: auto;
             }
 
+            .profile-links {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                margin-top: 22px;
+                font-size: 0.9rem;
+            }
+
+            .profile-links a,
+            .recognition a {
+                color: var(--accent-2);
+                text-decoration: none;
+                border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+            }
+
+            .profile-links a:hover,
+            .profile-links a:focus-visible,
+            .recognition a:hover,
+            .recognition a:focus-visible {
+                color: var(--text);
+                border-bottom-color: var(--accent-2);
+            }
+
             #email {
                 display: inline-flex;
                 align-items: center;
@@ -409,6 +495,16 @@
                 color: var(--text);
             }
 
+            .title-link {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .title-link:hover,
+            .title-link:focus-visible {
+                color: var(--accent-2);
+            }
+
             .description {
                 font-size: 0.95rem;
                 line-height: 1.7;
@@ -446,6 +542,38 @@
                 border-top: 1px solid var(--border);
             }
 
+            .recognition {
+                margin-top: 80px;
+                padding: 32px;
+                border: 1px solid var(--border);
+                border-radius: 20px;
+                background: rgba(255, 255, 255, 0.02);
+            }
+
+            .recognition h2 {
+                font-family: "Space Grotesk", sans-serif;
+                font-size: 1.5rem;
+                margin-bottom: 12px;
+            }
+
+            .recognition p {
+                color: var(--text-dim);
+                margin-bottom: 16px;
+            }
+
+            .recognition ul {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px 24px;
+                padding-left: 18px;
+                color: var(--text-dim);
+            }
+
+            a:focus-visible {
+                outline: 2px solid var(--accent-2);
+                outline-offset: 4px;
+            }
+
             @media (max-width: 1100px) {
                 .projects-grid {
                     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -476,7 +604,7 @@
         </style>
     </head>
     <body>
-        <div id="namecard">
+        <header id="namecard">
             <div class="hero-content">
                 <div class="hero-tag">
                     <span class="dot"></span>
@@ -490,28 +618,33 @@
                 <a id="email" href="mailto:vimalarajlogan@gmail.com"
                     >vimalarajlogan@gmail.com</a
                 >
+                <nav class="profile-links" aria-label="Profile links">
+                    <a href="https://github.com/loganoe" rel="me">GitHub</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#recognition">Recognition</a>
+                </nav>
             </div>
             <div class="scroll-indicator">Scroll ↓</div>
-        </div>
+        </header>
 
-        <div id="about">
+        <main id="about">
             <div class="about-grid">
                 <h2 id="aboutheader">About me</h2>
                 <p id="aboutcopy">
-                    14 year old mechatronics and software developer based in
-                    Reno, Nevada. Currently a student at the Davidson Academy. I
-                    use my cross-domain knowledge to build projects that
-                    encompass robotics hardware, low-level firmware, and
-                    fullstack software simultaniously.
+                    I’m Logan Vimalaraj, a student mechatronics and software
+                    developer based in Reno, Nevada. I’m currently a student at
+                    the Davidson Academy, using cross-domain knowledge to build
+                    projects that connect robotics hardware, low-level firmware,
+                    ROS, and full-stack software.
                 </p>
             </div>
 
             <h2 id="myprojectsheader">My projects</h2>
             <h3 class="agebracket">13:</h3>
 
-            <div class="projects-grid">
-                <div class="projectcard">
-                    <h2 class="title">DUM-E</h2>
+            <div id="projects" class="projects-grid">
+                <article class="projectcard">
+                    <h4 class="title">DUM-E</h4>
                     <p class="description">
                         In progress: A general purpose home assistant robot.
                         DUM-E takes long-horizon text commands (for example
@@ -520,14 +653,18 @@
                         control the drivebase, then uses a VLA model for precise
                         control over the arm.
                     </p>
-                </div>
+                </article>
 
-                <div class="projectcard">
-                    <h2 class="title">Robot Arm v6.5</h2>
+                <article class="projectcard">
+                    <h4 class="title">
+                        <a class="title-link" href="/projects/robot-arm-v65/"
+                            >Robot Arm v6.5</a
+                        >
+                    </h4>
                     <p class="description">
                         My most sophisticated robot arm yet, designed to be a
                         part of DUM-E. Built on the v6 foundation, this robot
-                        arm features 5 DOFs (+gripper), and a elbow joint driven
+                        arm features 5 DOFs (+gripper), and an elbow joint driven
                         by fiberglass-reinforced GT2 belt, moving weight away
                         from the elbow and reducing load on the shoulder. The
                         wrist is powered by differential helical bevel gears,
@@ -538,15 +675,24 @@
                         designed for the v6 arm, but the elbow joint gained an
                         additional 3:1 reduction via pulleys.
                     </p>
-                    <video src="v6_5arm.MOV" muted playsinline onclick="this.play()"></video>
-                </div>
+                    <video
+                        src="v6_5arm.mp4"
+                        poster="v6_5arm-poster.jpg"
+                        width="1080"
+                        height="1920"
+                        preload="none"
+                        controls
+                        muted
+                        playsinline
+                    ></video>
+                </article>
 
-                <div class="projectcard">
-                    <h2 class="title">Robot Arm v6</h2>
+                <article class="projectcard">
+                    <h4 class="title">Robot Arm v6</h4>
                     <p class="description">
                         While being smaller than the v5 arm, this arm has a
                         significantly larger torque buffer, aiming for
-                        reliability and repetability over a larger work area.
+                        reliability and repeatability over a larger work area.
                         This arm boasts 3 DOFs, with plans to upgrade to 5 DOFs
                         in v6.5. Built with aluminium extrusion and NEMA 17s. As
                         opposed to previous arms, all joints use a stackable 5:1
@@ -554,54 +700,72 @@
                         2 gearboxes stacked on top of each other to get a 25:1
                         reduction.
                     </p>
-                    <img src="v6arm.png" alt="Robot Arm v6" />
-                </div>
+                    <img
+                        src="v6arm.webp"
+                        alt="Robot Arm v6 with aluminium extrusion and NEMA 17 motors"
+                        width="756"
+                        height="1008"
+                        loading="lazy"
+                        decoding="async"
+                    />
+                </article>
 
-                <div class="projectcard">
-                    <h2 class="title">Self-playing chessboard</h2>
+                <article class="projectcard">
+                    <h4 class="title">Self-playing chessboard</h4>
                     <p class="description">
                         Collaboration with Siddhartha Hiremath. This board uses
                         a cartesian gantry powered by NEMA 17 motors, as well as
                         a magnet on a linear actuator, to autonomously play a
                         physical game of chess against the opponent.
                     </p>
-                </div>
+                </article>
 
-                <div class="projectcard">
-                    <h2 class="title">Robot arm v5</h2>
+                <article class="projectcard">
+                    <h4 class="title">Robot arm v5</h4>
                     <p class="description">
                         My first arm to use aluminium extrusion as the arm
                         segments. The added rigidity of aluminium led me to
                         attempt an extremely large, 800mm total reach arm. To
-                        power the shoulder joint, I used a 64:1 3 stage planetay
+                        power the shoulder joint, I used a 64:1 3 stage planetary
                         gearbox that I designed. The elbow and base were powered
                         by the 9:1 cycloidal drive I designed.
                     </p>
-                    <img src="v5.jpeg">
-                </div>
+                    <img
+                        src="v5.jpeg"
+                        alt="Robot arm v5 prototype designed by Logan Vimalaraj"
+                        width="1179"
+                        height="1454"
+                        loading="lazy"
+                        decoding="async"
+                    />
+                </article>
 
-                <div class="projectcard">
-                    <h2 class="title">InsightAI</h2>
+                <article class="projectcard">
+                    <h4 class="title">
+                        <a class="title-link" href="/projects/insight/"
+                            >Insight (InsightAI)</a
+                        >
+                    </h4>
                     <p class="description">
-                        Collaboration with Justin Barrata. InsightAI is a
+                        Collaboration with Justin Baratta. Insight is a
                         personalized learning platform that uses an LLM
-                        (currently Gemma4) to generate a personalized course for
+                        to generate a personalized course for
                         a user based on a text prompt and a difficulty selector.
                         Courses include many lessons, each with examples,
-                        sources, and practice problems. Winner of the 2026
-                        Congressional App Challenge for Nevada district #2. View
-                        the
+                        sources, and practice problems. Winner of the 2025
+                        Congressional App Challenge for Nevada’s 2nd District.
+                        View the
                         <a
                             href="https://www.youtube.com/watch?v=CvaFKUh-MBM"
                             class="white"
-                            >demo video here.</a
+                            >Insight demo video.</a
                         >
                     </p>
-                </div>
-            <div class="projectcard">
-                <h2 class="title">Cycloidal Drive</h2>
+                </article>
+            <article class="projectcard">
+                <h4 class="title">Cycloidal Drive</h4>
                 <p class="description">
-                    A 3d printed 9:1 reduction cycloidal drive for a NEMA 17
+                    A 3D-printed 9:1 reduction cycloidal drive for a NEMA 17
                     stepper I designed in Onshape for my robotic arm actuators.
                     It uses dual cycloidal disks to cancel out vibrations, and
                     is fairly compact. View and download the files to make it
@@ -612,32 +776,78 @@
                         >here.</a
                     >
                 </p>
-                <img src="cycloidaldrive.webp">
-            </div>
-            <div class="projectcard">
-                <h2 class="title">Robot arm v4</h2>
+                <img
+                    src="cycloidaldrive.webp"
+                    alt="3D-printed 9:1 cycloidal drive gearbox for a NEMA 17 stepper motor"
+                    width="1280"
+                    height="960"
+                    loading="lazy"
+                    decoding="async"
+                />
+            </article>
+            <article class="projectcard">
+                <h4 class="title">Robot arm v4</h4>
                 <p class="description">
                     My first arm to use actuators entirely designed by me. All joints use my custom 9:1 cycloidal drive.
                 </p>
-            </div>
-            <div class="projectcard">
-                <h2 class="title">Pen Plotter v2</h2>
+            </article>
+            <article class="projectcard">
+                <h4 class="title">Pen Plotter v2</h4>
                 <p class="description">
-                    My best pen plotter so far. Instead of using 28BYJ-48 stepper motors, this plotter uses 2 NEMA 17 steppers to control the XY axes (Cartesian motion system). Frame is fully 3d printed.
+                    My best pen plotter so far. Instead of using 28BYJ-48 stepper motors, this plotter uses 2 NEMA 17 steppers to control the XY axes (Cartesian motion system). The frame is fully 3D printed.
                 </p>
-                <video src="penplotterv2trimmed.mp4" muted playsinline onclick="this.play()"></video>
-            </div>
-            <div class="projectcard">
-                <h2 class="title">Robot Arm v3</h2>
+                <video
+                    src="penplotterv2trimmed.mp4"
+                    width="1080"
+                    height="1920"
+                    preload="none"
+                    controls
+                    muted
+                    playsinline
+                ></video>
+            </article>
+            <article class="projectcard">
+                <h4 class="title">Robot Arm v3</h4>
                 <p class="description">
-                    My first robot arm to use NEMA 17 stepper motors, and my first to use an belt-driven elbow. The actuators use 3:1 planetary reductions (gearboxes are not my own design).
+                    My first robot arm to use NEMA 17 stepper motors, and my first to use a belt-driven elbow. The actuators use 3:1 planetary reductions (gearboxes are not my own design).
                 </p>
-                <video src="v3.mp4" muted playsinline onclick="this.play()"></video>
+                <video
+                    src="v3.mp4"
+                    width="1080"
+                    height="1920"
+                    preload="none"
+                    controls
+                    muted
+                    playsinline
+                ></video>
+            </article>
             </div>
+
+            <section id="recognition" class="recognition" aria-labelledby="recognition-heading">
+                <h2 id="recognition-heading">Profiles and recognition</h2>
+                <p>
+                    Find more of Logan’s work and verify the Insight award through
+                    these public sources.
+                </p>
+                <ul>
+                    <li><a href="https://github.com/loganoe" rel="me">GitHub profile</a></li>
+                    <li>
+                        <a href="https://www.congressionalappchallenge.us/25-NV02/"
+                            >Official Insight award announcement</a
+                        >
+                    </li>
+                    <li>
+                        <a href="https://www.house.gov/educators-and-students/congressional-app-challenge"
+                            >House.gov winners list</a
+                        >
+                    </li>
+                </ul>
+            </section>
+
             <p class="closing-note">
                 ... This site is in progress, much more of my previous projects
                 will be added soon!
             </p>
-        </div>
+        </main>
     </body>
 </html>

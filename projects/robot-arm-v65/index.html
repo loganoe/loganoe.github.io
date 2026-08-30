@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Logan Vimalaraj's Robot Arm v6.5 uses five degrees of freedom, a belt-driven elbow, a differential wrist, and custom planetary gearboxes for the DUM-E robot."
+    />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://loganoe.github.io/projects/robot-arm-v65/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Logan Vimalaraj" />
+    <meta property="og:title" content="Robot Arm v6.5 | Logan Vimalaraj" />
+    <meta
+      property="og:description"
+      content="A five-DOF robot arm with a belt-driven elbow, differential wrist, and custom planetary gearboxes."
+    />
+    <meta property="og:url" content="https://loganoe.github.io/projects/robot-arm-v65/" />
+    <meta property="og:image" content="https://loganoe.github.io/v6_5arm-poster.jpg" />
+    <meta property="og:image:alt" content="Robot Arm v6.5 prototype designed by Logan Vimalaraj" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Robot Arm v6.5 | Logan Vimalaraj" />
+    <meta
+      name="twitter:description"
+      content="A five-DOF robot arm with a belt-driven elbow, differential wrist, and custom planetary gearboxes."
+    />
+    <meta name="twitter:image" content="https://loganoe.github.io/v6_5arm-poster.jpg" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Robot Arm v6.5 | Logan Vimalaraj</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "https://loganoe.github.io/projects/robot-arm-v65/",
+        "url": "https://loganoe.github.io/projects/robot-arm-v65/",
+        "name": "Robot Arm v6.5 | Logan Vimalaraj",
+        "description": "Logan Vimalaraj's five-DOF robot arm with a belt-driven elbow, differential wrist, and custom planetary gearboxes.",
+        "isPartOf": { "@id": "https://loganoe.github.io/#website" },
+        "about": { "@id": "https://loganoe.github.io/#person" },
+        "author": { "@id": "https://loganoe.github.io/#person" },
+        "inLanguage": "en-US"
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../project.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a href="/" aria-label="Back to Logan Vimalaraj home">Logan Vimalaraj</a>
+        <span class="eyebrow">Project journal</span>
+      </header>
+
+      <main>
+        <p class="breadcrumb"><a href="/">Home</a> / Robot Arm v6.5</p>
+        <section class="project-hero" aria-labelledby="project-title">
+          <span class="project-label">Robotics hardware</span>
+          <h1 id="project-title">Robot Arm v6.5</h1>
+          <p class="lede">
+            A five-degree-of-freedom robot arm with a gripper, designed as part
+            of the DUM-E home-assistant robot.
+          </p>
+        </section>
+
+        <div class="project-layout">
+          <article class="project-panel">
+            <h2>Design goals</h2>
+            <p>
+              Robot Arm v6.5 builds on the v6 foundation while moving more of the
+              arm’s weight away from the shoulder. The design uses NEMA 17 motors
+              for every degree of freedom other than the gripper and is intended
+              to provide a larger, more reliable work area for DUM-E.
+            </p>
+
+            <h2>Transmission and wrist</h2>
+            <p>
+              A fiberglass-reinforced GT2 belt drives the elbow and adds a 3:1
+              pulley reduction. The wrist uses differential helical bevel gears,
+              which allows its motors to be belt-driven while also acting as
+              counterweights for the payload. The actuators reuse the stackable
+              5:1 planetary gearbox Logan designed for the v6 arm.
+            </p>
+
+            <h2>What comes next</h2>
+            <p>
+              This arm is a hardware platform for DUM-E’s software stack. Future
+              updates will document calibration, control firmware, and the arm’s
+              role in precise VLA-based manipulation as those parts are ready to
+              share.
+            </p>
+          </article>
+
+          <aside class="project-panel">
+            <figure>
+              <video
+                class="project-media"
+                src="../../v6_5arm.mp4"
+                poster="../../v6_5arm-poster.jpg"
+                width="1080"
+                height="1920"
+                preload="metadata"
+                controls
+                muted
+                playsinline
+              ></video>
+              <figcaption>
+                Robot Arm v6.5 prototype in the workshop. Video by Logan
+                Vimalaraj.
+              </figcaption>
+            </figure>
+            <div class="project-links">
+              <a href="/">Portfolio home</a>
+              <a href="https://github.com/loganoe">Logan’s GitHub profile</a>
+            </div>
+          </aside>
+        </div>
+
+        <a class="back-link" href="/">← Back to all projects</a>
+      </main>
+    </div>
+  </body>
+</html>
