@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="DUM-E is Logan Vimalaraj's general-purpose home robot: a 6-DOF arm on a vertical lift and mobile drivebase, planned by an LLM + pointer + SLAM stack with VLA arm control." />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://loganoe.github.io/projects/dum-e/" />
+    <meta name="theme-color" content="#f1f0eb" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Logan Vimalaraj" />
+    <meta property="og:title" content="DUM-E | Logan Vimalaraj" />
+    <meta property="og:description" content="A mobile home-assistant robot with a 6-DOF arm, vertical lift and drivebase." />
+    <meta property="og:url" content="https://loganoe.github.io/projects/dum-e/" />
+    <meta property="og:image" content="https://loganoe.github.io/media/dume-loop.jpg" />
+    <meta property="og:image:alt" content="DUM-E robot in a bedroom workshop" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="DUM-E | Logan Vimalaraj" />
+    <meta name="twitter:description" content="A mobile home-assistant robot with a 6-DOF arm, vertical lift and drivebase." />
+    <meta name="twitter:image" content="https://loganoe.github.io/media/dume-loop.jpg" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>DUM-E | Logan Vimalaraj</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "https://loganoe.github.io/projects/dum-e/",
+        "url": "https://loganoe.github.io/projects/dum-e/",
+        "name": "DUM-E | Logan Vimalaraj",
+        "description": "DUM-E is Logan Vimalaraj's general-purpose home robot: a 6-DOF arm on a vertical lift and mobile drivebase, planned by an LLM + pointer + SLAM stack with VLA arm control.",
+        "isPartOf": {
+          "@id": "https://loganoe.github.io/#website"
+        },
+        "about": {
+          "@id": "https://loganoe.github.io/#person"
+        },
+        "author": {
+          "@id": "https://loganoe.github.io/#person"
+        },
+        "inLanguage": "en-US"
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/project.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="home" href="/" aria-label="Logan Vimalaraj, home">Logan Vimalaraj</a>
+        <a class="link" href="/#projects">← All work</a>
+      </header>
+
+      <main>
+        <section class="project-hero" aria-labelledby="project-title">
+          <p class="project-label" data-in><span>01</span><span>Flagship · Hardware complete</span></p>
+          <h1 id="project-title" data-in style="--i: 1">DUM-E</h1>
+          <p class="lede" data-in style="--i: 2">A general-purpose home robot. Give it a long-horizon command like “clean this room” and it plans, drives and manipulates on its own.</p>
+        </section>
+
+        <figure class="project-media" data-in style="--i: 3">
+          <div>
+            <video src="/media/dume-demo.mp4" poster="/media/dume-demo.jpg" width="1280" height="720" controls muted playsinline preload="metadata" aria-label="DUM-E full demo"></video>
+            <figcaption>Full demo, unedited: the drivebase, lift and arm working together.</figcaption>
+          </div>
+        </figure>
+
+        <div class="project-layout">
+          <article class="project-body" data-in style="--i: 4">
+            <h2>The hardware is done</h2>
+            <p>
+              DUM-E combines three subsystems that are now built and working
+              together: a mobile drivebase, a vertical lift, and a
+              six-degree-of-freedom arm. The arm is my Robot Arm v7. It rides a
+              stepper-driven carriage on an aluminium mast, so the same arm can
+              work near the floor or at desk height.
+            </p>
+
+            <h2>How it thinks</h2>
+            <p>
+              DUM-E takes long-horizon text commands. An LLM + pointer + SLAM
+              planner breaks each task into smaller steps and drives the base
+              directly, then a VLA model takes over for precise control of the
+              arm.
+            </p>
+            <p>
+              Onboard compute is a Raspberry Pi 4 inside the white base. It
+              runs the ROS&nbsp;2 master, and an ESP32 bridges it to the motors.
+              The arm already runs a SmolVLA policy trained on around 30
+              episodes, and the software stack is where development is focused
+              now.
+            </p>
+          </article>
+
+          <aside class="project-facts" data-in style="--i: 5" aria-label="At a glance">
+            <dl>
+              <div><dt>Status</dt><dd>Hardware complete · software in progress</dd></div>
+              <div><dt>Subsystems</dt><dd>Drivebase, vertical lift, 6-DOF arm + gripper</dd></div>
+              <div><dt>Planning</dt><dd>LLM + pointer + SLAM</dd></div>
+              <div><dt>Manipulation</dt><dd>VLA policy (SmolVLA)</dd></div>
+              <div><dt>Compute</dt><dd>Raspberry Pi 4 in the base (ROS 2 master) → ESP32 bridge</dd></div>
+            </dl>
+            <div class="project-links">
+              <a class="link" href="/projects/robot-arm-v7/">Robot Arm v7</a>
+              <a class="link" href="https://github.com/loganoe">GitHub ↗</a>
+            </div>
+          </aside>
+        </div>
+
+        <a class="back-link" href="/">← Back to the portfolio</a>
+      </main>
+    </div>
+  </body>
+</html>

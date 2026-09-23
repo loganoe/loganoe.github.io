@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Robot Arm v7 by Logan Vimalaraj: a 6-DOF arm with custom cycloidal drives, closed-loop joints, an RPR wrist, ~500 mm reach and ~800 g payload, built for the DUM-E robot." />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://loganoe.github.io/projects/robot-arm-v7/" />
+    <meta name="theme-color" content="#f1f0eb" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Logan Vimalaraj" />
+    <meta property="og:title" content="Robot Arm v7 | Logan Vimalaraj" />
+    <meta property="og:description" content="A 6-DOF arm with custom cycloidal drives, closed-loop joints and an RPR wrist." />
+    <meta property="og:url" content="https://loganoe.github.io/projects/robot-arm-v7/" />
+    <meta property="og:image" content="https://loganoe.github.io/media/v7-teleop.jpg" />
+    <meta property="og:image:alt" content="Robot Arm v7 on the workbench" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Robot Arm v7 | Logan Vimalaraj" />
+    <meta name="twitter:description" content="A 6-DOF arm with custom cycloidal drives, closed-loop joints and an RPR wrist." />
+    <meta name="twitter:image" content="https://loganoe.github.io/media/v7-teleop.jpg" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Robot Arm v7 | Logan Vimalaraj</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "https://loganoe.github.io/projects/robot-arm-v7/",
+        "url": "https://loganoe.github.io/projects/robot-arm-v7/",
+        "name": "Robot Arm v7 | Logan Vimalaraj",
+        "description": "Robot Arm v7 by Logan Vimalaraj: a 6-DOF arm with custom cycloidal drives, closed-loop joints, an RPR wrist, ~500 mm reach and ~800 g payload, built for the DUM-E robot.",
+        "isPartOf": {
+          "@id": "https://loganoe.github.io/#website"
+        },
+        "about": {
+          "@id": "https://loganoe.github.io/#person"
+        },
+        "author": {
+          "@id": "https://loganoe.github.io/#person"
+        },
+        "inLanguage": "en-US"
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/project.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="home" href="/" aria-label="Logan Vimalaraj, home">Logan Vimalaraj</a>
+        <a class="link" href="/#projects">← All work</a>
+      </header>
+
+      <main>
+        <section class="project-hero" aria-labelledby="project-title">
+          <p class="project-label" data-in><span>02</span><span>Robotics hardware</span></p>
+          <h1 id="project-title" data-in style="--i: 1">Robot Arm <em>v7</em></h1>
+          <p class="lede" data-in style="--i: 2">The seventh version of my robot arm, and the one DUM-E carries. I designed every part from scratch in Onshape.</p>
+        </section>
+
+        <div class="project-media two" data-in style="--i: 3">
+          <figure>
+            <video src="/media/v7-teleop.mp4" poster="/media/v7-teleop.jpg" width="1000" height="848" autoplay muted loop playsinline preload="metadata" aria-label="Robot Arm v7 mirroring a leader arm"></video>
+            <figcaption>Teleoperation through my AS5600-based leader arm.</figcaption>
+          </figure>
+          <figure>
+            <video src="/media/v7-vla.mp4" poster="/media/v7-vla.jpg" width="720" height="1280" autoplay muted loop playsinline preload="metadata" aria-label="Robot Arm v7 running a SmolVLA policy"></video>
+            <figcaption>SmolVLA policy trained on ~30 episodes, at 3× speed.</figcaption>
+          </figure>
+        </div>
+
+        <div class="project-layout">
+          <article class="project-body" data-in style="--i: 4">
+            <h2>Design</h2>
+            <p>
+              v7 has six degrees of freedom plus a gripper. The wrist is RPR: a
+              roll joint followed by a differential for pitch and roll. The
+              segments are 2020 aluminium extrusion, and most other parts are 3D
+              printed.
+            </p>
+            <p>
+              A NEMA 23 drives the shoulder, and NEMA 17s drive the base, elbow
+              and wrist. The base, shoulder and elbow run closed loop. The joints
+              use custom cycloidal drives I designed, and the 15:1 low-profile
+              gearbox is published on MakerWorld.
+            </p>
+
+            <h2>Control and learning</h2>
+            <p>
+              An ESP32 runs a bridge so a ROS&nbsp;2 master, such as a Raspberry
+              Pi, can control the arm. I collect demonstrations with a leader arm
+              built around AS5600 magnetic encoders, and used them to train a
+              SmolVLA policy on about 30 episodes. The shakiness in the video
+              comes from that small, fairly low-quality dataset.
+            </p>
+          </article>
+
+          <aside class="project-facts" data-in style="--i: 5" aria-label="At a glance">
+            <dl>
+              <div><dt>Degrees of freedom</dt><dd>6 + gripper</dd></div>
+              <div><dt>Reach / payload</dt><dd>~500 mm / ~800 g</dd></div>
+              <div><dt>Motors</dt><dd>NEMA 23 shoulder, NEMA 17 elsewhere</dd></div>
+              <div><dt>Reduction</dt><dd>Custom cycloidal drives</dd></div>
+              <div><dt>Gripper</dt><dd>DS3218MG servo</dd></div>
+              <div><dt>Control</dt><dd>ESP32 bridge to ROS 2</dd></div>
+            </dl>
+            <div class="project-links">
+              <a class="link" href="https://github.com/loganoe/RobotArmV7">Repository ↗</a>
+              <a class="link" href="https://makerworld.com/en/models/2965474-15-1-low-profile-cycloidal-drive-gearbox-nema-17#profileId-3324878">15:1 gearbox on MakerWorld ↗</a>
+              <a class="link" href="/projects/dum-e/">DUM-E</a>
+            </div>
+          </aside>
+        </div>
+
+        <a class="back-link" href="/">← Back to the portfolio</a>
+      </main>
+    </div>
+  </body>
+</html>
