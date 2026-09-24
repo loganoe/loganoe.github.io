@@ -88,8 +88,8 @@
         <span class="nav__dot" aria-hidden="true"></span>Logan Vimalaraj
       </a>
       <nav class="nav__links" aria-label="Sections">
-        <a href="#dume" data-roll>DUM-E</a>
         <a href="#arm-v7" data-roll>Arm v7</a>
+        <a href="#dume" data-roll>DUM-E</a>
         <a href="#lineage" data-roll>Lineage</a>
         <a href="#projects" data-roll>Projects</a>
         <a href="#contact" data-roll>Contact</a>
@@ -155,11 +155,113 @@
         </p>
       </section>
 
+      <!-- ARM V7 -->
+      <section class="arm" id="arm-v7" aria-labelledby="arm-title">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="mono" data-reveal="fade"><span class="idx">01</span> The manipulator</p>
+            <p class="mono sec-head__links" data-reveal="fade">
+              <a class="link" href="/projects/robot-arm-v7/">Project page</a>
+              <a class="link" href="https://github.com/loganoe/RobotArmV7">Repo on GitHub ↗</a>
+            </p>
+          </header>
+
+          <div class="arm__head">
+            <h2 class="h2" id="arm-title" data-reveal="lines">Robot Arm <em>v7</em></h2>
+            <p class="lead" data-reveal="lines">
+              The seventh version of my arm, and the one DUM-E carries. I
+              designed every part from scratch in Onshape.
+            </p>
+          </div>
+
+          <dl class="stats" data-reveal="stagger">
+            <div class="stat"><dt>Degrees of freedom</dt><dd><span data-count="6">6</span><small>+ gripper</small></dd></div>
+            <div class="stat"><dt>Reach</dt><dd><small>~</small><span data-count="500">500</span><small>mm</small></dd></div>
+            <div class="stat"><dt>Payload</dt><dd><small>~</small><span data-count="800">800</span><small>g</small></dd></div>
+            <div class="stat"><dt>Cycloidal reduction</dt><dd><span data-count="15">15</span><small>: 1</small></dd></div>
+          </dl>
+
+        </div>
+
+        <div class="demo" data-demo-switch data-reveal="demo">
+          <div class="demo__stage">
+            <figure class="demo__slide is-active" data-slide="0" aria-label="Teleoperation demo">
+              <video
+                data-src="/media/v7-teleop.mp4"
+                poster="/media/v7-teleop.jpg"
+                width="1270"
+                height="1078"
+                muted
+                loop
+                playsinline
+                preload="none"
+                data-autoplay
+                aria-label="Robot Arm v7 mirroring a hand-held leader arm"
+              ></video>
+            </figure>
+            <figure class="demo__slide demo__slide--policy" data-slide="1" aria-label="Autonomous policy demo" aria-hidden="true" inert>
+              <video
+                data-src="/media/v7-vla.mp4"
+                poster="/media/v7-vla.jpg"
+                width="720"
+                height="1280"
+                muted
+                loop
+                playsinline
+                preload="none"
+                aria-label="Robot Arm v7 running a SmolVLA policy"
+              ></video>
+              <div class="demo__about">
+                <p class="mono">SmolVLA · 3× speed</p>
+                <h3 class="h3">No hands <em>on the controls.</em></h3>
+                <p>
+                  An autonomous policy trained on about 30 teleoperated episodes.
+                  The shakiness comes from that small, fairly low-quality
+                  dataset.
+                </p>
+              </div>
+            </figure>
+
+            <div class="demo__bar">
+              <p class="demo__cap" aria-live="polite">
+                <span class="mono" data-demo-label>Teleop</span>
+                <span data-demo-text>Driven live by a leader arm I built around AS5600 magnetic encoders.</span>
+              </p>
+              <button class="demo__switch" type="button" data-demo-next data-magnetic aria-label="Show the autonomous policy demo">
+                <span data-demo-btn>Policy demo</span>
+                <span class="demo__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="wrap">
+          <div class="spec">
+            <h3 class="mono spec__title" data-reveal="fade">Specification</h3>
+            <dl class="spec__list" data-reveal="rows">
+              <div><dt>Wrist</dt><dd>RPR: a roll joint, then a differential for pitch and roll</dd></div>
+              <div><dt>Motors</dt><dd>NEMA 23 on the shoulder; NEMA 17 on the base, elbow and wrist</dd></div>
+              <div><dt>Feedback</dt><dd>Closed loop on the base, shoulder and elbow</dd></div>
+              <div><dt>Reduction</dt><dd>Custom low-profile cycloidal drives on the joints</dd></div>
+              <div><dt>Structure</dt><dd>2020 aluminium extrusion segments with 3D-printed parts</dd></div>
+              <div><dt>Gripper</dt><dd>DS3218MG servo</dd></div>
+              <div><dt>Control</dt><dd>ESP32 bridge to a ROS&nbsp;2 master, such as a Raspberry Pi</dd></div>
+            </dl>
+            <p class="spec__foot" data-reveal="fade">
+              The 15:1 cycloidal gearbox is open source.
+              <a class="link" href="https://makerworld.com/en/models/2965474-15-1-low-profile-cycloidal-drive-gearbox-nema-17#profileId-3324878">Download it on MakerWorld ↗</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
       <!-- DUM-E -->
       <section class="dume" id="dume" data-theme="dark" aria-labelledby="dume-title">
         <div class="wrap">
           <header class="sec-head">
-            <p class="mono" data-reveal="fade"><span class="idx">01</span> Flagship project</p>
+            <p class="mono" data-reveal="fade"><span class="idx">02</span> Flagship project</p>
             <p class="status" data-reveal="fade">
               <span class="status__dot" aria-hidden="true"></span>
               Hardware complete · Software in progress
@@ -307,108 +409,6 @@
                 <small>Joint commands to the steppers</small>
               </li>
             </ol>
-          </div>
-        </div>
-      </section>
-
-      <!-- ARM V7 -->
-      <section class="arm" id="arm-v7" aria-labelledby="arm-title">
-        <div class="wrap">
-          <header class="sec-head">
-            <p class="mono" data-reveal="fade"><span class="idx">02</span> The manipulator</p>
-            <p class="mono sec-head__links" data-reveal="fade">
-              <a class="link" href="/projects/robot-arm-v7/">Project page</a>
-              <a class="link" href="https://github.com/loganoe/RobotArmV7">Repo on GitHub ↗</a>
-            </p>
-          </header>
-
-          <div class="arm__head">
-            <h2 class="h2" id="arm-title" data-reveal="lines">Robot Arm <em>v7</em></h2>
-            <p class="lead" data-reveal="lines">
-              The seventh version of my arm, and the one DUM-E carries. I
-              designed every part from scratch in Onshape.
-            </p>
-          </div>
-
-          <dl class="stats" data-reveal="stagger">
-            <div class="stat"><dt>Degrees of freedom</dt><dd><span data-count="6">6</span><small>+ gripper</small></dd></div>
-            <div class="stat"><dt>Reach</dt><dd><small>~</small><span data-count="500">500</span><small>mm</small></dd></div>
-            <div class="stat"><dt>Payload</dt><dd><small>~</small><span data-count="800">800</span><small>g</small></dd></div>
-            <div class="stat"><dt>Cycloidal reduction</dt><dd><span data-count="15">15</span><small>: 1</small></dd></div>
-          </dl>
-
-        </div>
-
-        <div class="demo" data-demo-switch data-reveal="demo">
-          <div class="demo__stage">
-            <figure class="demo__slide is-active" data-slide="0" aria-label="Teleoperation demo">
-              <video
-                data-src="/media/v7-teleop.mp4"
-                poster="/media/v7-teleop.jpg"
-                width="1270"
-                height="1078"
-                muted
-                loop
-                playsinline
-                preload="none"
-                data-autoplay
-                aria-label="Robot Arm v7 mirroring a hand-held leader arm"
-              ></video>
-            </figure>
-            <figure class="demo__slide demo__slide--policy" data-slide="1" aria-label="Autonomous policy demo" aria-hidden="true" inert>
-              <video
-                data-src="/media/v7-vla.mp4"
-                poster="/media/v7-vla.jpg"
-                width="720"
-                height="1280"
-                muted
-                loop
-                playsinline
-                preload="none"
-                aria-label="Robot Arm v7 running a SmolVLA policy"
-              ></video>
-              <div class="demo__about">
-                <p class="mono">SmolVLA · 3× speed</p>
-                <h3 class="h3">No hands <em>on the controls.</em></h3>
-                <p>
-                  An autonomous policy trained on about 30 teleoperated episodes.
-                  The shakiness comes from that small, fairly low-quality
-                  dataset.
-                </p>
-              </div>
-            </figure>
-
-            <div class="demo__bar">
-              <p class="demo__cap" aria-live="polite">
-                <span class="mono" data-demo-label>Teleop</span>
-                <span data-demo-text>Driven live by a leader arm I built around AS5600 magnetic encoders.</span>
-              </p>
-              <button class="demo__switch" type="button" data-demo-next data-magnetic aria-label="Show the autonomous policy demo">
-                <span data-demo-btn>Policy demo</span>
-                <span class="demo__arrow" aria-hidden="true">
-                  <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="wrap">
-          <div class="spec">
-            <h3 class="mono spec__title" data-reveal="fade">Specification</h3>
-            <dl class="spec__list" data-reveal="rows">
-              <div><dt>Wrist</dt><dd>RPR: a roll joint, then a differential for pitch and roll</dd></div>
-              <div><dt>Motors</dt><dd>NEMA 23 on the shoulder; NEMA 17 on the base, elbow and wrist</dd></div>
-              <div><dt>Feedback</dt><dd>Closed loop on the base, shoulder and elbow</dd></div>
-              <div><dt>Reduction</dt><dd>Custom low-profile cycloidal drives on the joints</dd></div>
-              <div><dt>Structure</dt><dd>2020 aluminium extrusion segments with 3D-printed parts</dd></div>
-              <div><dt>Gripper</dt><dd>DS3218MG servo</dd></div>
-              <div><dt>Control</dt><dd>ESP32 bridge to a ROS&nbsp;2 master, such as a Raspberry Pi</dd></div>
-            </dl>
-            <p class="spec__foot" data-reveal="fade">
-              The 15:1 cycloidal gearbox is open source.
-              <a class="link" href="https://makerworld.com/en/models/2965474-15-1-low-profile-cycloidal-drive-gearbox-nema-17#profileId-3324878">Download it on MakerWorld ↗</a>
-            </p>
           </div>
         </div>
       </section>
