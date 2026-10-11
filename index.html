@@ -91,6 +91,7 @@
         <a href="#arm-v7" data-roll>Arm v7</a>
         <a href="#dume" data-roll>DUM-E</a>
         <a href="#lineage" data-roll>Lineage</a>
+        <a href="#sim" data-roll>Sim</a>
         <a href="#projects" data-roll>Projects</a>
         <a href="#contact" data-roll>Contact</a>
       </nav>
@@ -479,11 +480,128 @@
         </div>
       </section>
 
+      <!-- SIMULATION -->
+      <section class="sim" id="sim" data-theme="dark" aria-labelledby="sim-title">
+        <div class="wrap">
+          <header class="sec-head">
+            <p class="mono" data-reveal="fade"><span class="idx">04</span> Simulation</p>
+            <p class="mono sec-head__links" data-reveal="fade">
+              <a class="link" href="https://github.com/loganoe/simulator">Repo on GitHub ↗</a>
+            </p>
+          </header>
+
+          <div class="sim__head">
+            <h2 class="h2" id="sim-title" data-reveal="lines">A digital twin, <em>driven by Claude.</em></h2>
+            <p class="lead" data-reveal="lines">
+              DUM-E in MuJoCo, speaking the same ROS&nbsp;2 topics as the real
+              robot. Claude Opus 5.5 runs it end to end through an MCP server.
+            </p>
+          </div>
+
+          <div class="runs">
+            <article class="run">
+              <figure class="run__media" data-open-demo="sim-room">
+                <video
+                  id="sim-room"
+                  data-src="/media/sim-room.mp4"
+                  poster="/media/sim-room.jpg"
+                  width="1280"
+                  height="800"
+                  muted
+                  loop
+                  playsinline
+                  preload="none"
+                  data-autoplay
+                  aria-label="Claude driving the simulated DUM-E through the test-room tasks, shown at 35× speed"
+                ></video>
+              </figure>
+              <div class="run__text">
+                <p class="mono" data-reveal="fade"><span class="idx">Run 01</span>Test room</p>
+                <h3 class="h3" data-reveal="lines">A room full <em>of chores.</em></h3>
+                <p data-reveal="fade">
+                  Stack and sort cubes, bring cans down from a shelf (the top one
+                  needs the lift), open a drawer and lift out a block, press a
+                  button, then park on the charger. Stacking and sorting share the
+                  same cubes, so 7 of 8 is the most the board can show at once.
+                  Claude did both.
+                </p>
+                <dl class="run__stats" data-reveal="stagger">
+                  <div><dt>Tasks</dt><dd><span data-count="7">7</span><small>/ 8</small></dd></div>
+                  <div><dt>Real time</dt><dd><span data-count="41">41</span><small>min</small></dd></div>
+                  <div><dt>Shown at</dt><dd><span data-count="35">35</span><small>×</small></dd></div>
+                </dl>
+                <button class="run__play" type="button" data-open-demo="sim-room" data-magnetic>
+                  <span class="play__icon" aria-hidden="true">
+                    <svg viewBox="0 0 16 16"><path d="M5 3.5v9l7.5-4.5z" /></svg>
+                  </span>
+                  Watch full size <span class="mono">1:10</span>
+                </button>
+              </div>
+            </article>
+
+            <article class="run run--flip">
+              <figure class="run__media" data-open-demo="sim-house">
+                <video
+                  id="sim-house"
+                  data-src="/media/sim-house.mp4"
+                  poster="/media/sim-house.jpg"
+                  width="1280"
+                  height="800"
+                  muted
+                  loop
+                  playsinline
+                  preload="none"
+                  data-autoplay
+                  aria-label="Claude navigating the simulated DUM-E through a five-room house, shown at 25× speed"
+                ></video>
+              </figure>
+              <div class="run__text">
+                <p class="mono" data-reveal="fade"><span class="idx">Run 02</span>One-story house</p>
+                <h3 class="h3" data-reveal="lines">Five rooms, <em>no coordinates.</em></h3>
+                <p data-reveal="fade">
+                  A navigation test. Claude gets directions in words, never
+                  positions or ground truth: only drifting odometry, LiDAR, ToF
+                  sensors and the cameras. It toured every room, carried a soda
+                  can from the kitchen to the office desk and a towel to the
+                  laundry basket, switched on a bedside lamp, and docked, with 12
+                  bumps along the way.
+                </p>
+                <dl class="run__stats" data-reveal="stagger">
+                  <div><dt>Tasks</dt><dd><span data-count="5">5</span><small>/ 5</small></dd></div>
+                  <div><dt>Real time</dt><dd><span data-count="37">37</span><small>min</small></dd></div>
+                  <div><dt>Shown at</dt><dd><span data-count="25">25</span><small>×</small></dd></div>
+                </dl>
+                <button class="run__play" type="button" data-open-demo="sim-house" data-magnetic>
+                  <span class="play__icon" aria-hidden="true">
+                    <svg viewBox="0 0 16 16"><path d="M5 3.5v9l7.5-4.5z" /></svg>
+                  </span>
+                  Watch full size <span class="mono">1:30</span>
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <div class="spec">
+            <h3 class="mono spec__title" data-reveal="fade">How it works</h3>
+            <dl class="spec__list" data-reveal="rows">
+              <div><dt>Physics</dt><dd>MuJoCo, with the drive ESP32, arm bridge, lift, IMU, ToF, cameras and LiDAR emulated</dd></div>
+              <div><dt>Interface</dt><dd>The real robot’s ROS&nbsp;2 topics, so DUM-E’s own control stack runs on it unchanged</dd></div>
+              <div><dt>Agent</dt><dd>Claude Opus 5.5 over MCP: observe, drive, move the arm, set the lift and gripper</dd></div>
+              <div><dt>Judging</dt><dd>The sim scores each task from the physical state and counts every bump</dd></div>
+            </dl>
+            <p class="spec__foot" data-reveal="fade">
+              The simulator, task boards and MCP server are on GitHub.
+              <a class="link" href="https://github.com/loganoe/simulator">loganoe/simulator ↗</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
       <!-- PROJECTS -->
       <section class="projects" id="projects" aria-labelledby="projects-title">
         <div class="wrap">
           <header class="sec-head">
-            <p class="mono" data-reveal="fade"><span class="idx">04</span> More work</p>
+            <p class="mono" data-reveal="fade"><span class="idx">05</span> More work</p>
           </header>
           <h2 class="h2" id="projects-title" data-reveal="lines">Other things <em>I’ve made</em></h2>
 
@@ -598,7 +716,7 @@
       <section class="about" id="about" aria-labelledby="about-title">
         <div class="wrap about__grid">
           <div>
-            <p class="mono" data-reveal="fade"><span class="idx">05</span> About</p>
+            <p class="mono" data-reveal="fade"><span class="idx">06</span> About</p>
             <h2 class="h2" id="about-title" data-reveal="lines">Hardware, firmware <em>&amp;</em> everything between</h2>
           </div>
           <div class="about__body">
@@ -620,7 +738,7 @@
       <!-- CONTACT -->
       <footer class="contact" id="contact" data-theme="dark" aria-labelledby="contact-title">
         <div class="wrap">
-          <p class="mono" data-reveal="fade"><span class="idx">06</span> Contact</p>
+          <p class="mono" data-reveal="fade"><span class="idx">07</span> Contact</p>
           <h2 class="contact__title" id="contact-title" data-reveal="lines">Let’s build <em>something.</em></h2>
           <div class="contact__mail" data-reveal="fade">
             <a class="contact__email" href="mailto:vimalarajlogan@gmail.com">vimalarajlogan@gmail.com</a>

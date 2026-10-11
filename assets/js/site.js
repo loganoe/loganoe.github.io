@@ -96,12 +96,24 @@
       vio.observe(v);
     });
 
-  // Full demo modal
+  // Full-size video modal: the DUM-E demo, or an inline video named by data-open-demo="<id>"
   const dialog = $("[data-demo]");
   const demo = $("video", dialog);
-  let lenis;
-  const openDemo = () => {
-    if (!demo.getAttribute("src")) demo.src = demo.dataset.src;
+  const asClip = (v, label) => ({ src: v.dataset.src, poster: v.getAttribute("poster"), w: v.width, h: v.height, label });
+  const dumeClip = asClip(demo, dialog.getAttribute("aria-label"));
+  let lenis, inline;
+  const openDemo = (from) => {
+    const clip = from ? asClip(from, from.getAttribute("aria-label")) : dumeClip;
+    if (demo.getAttribute("src") !== clip.src) {
+      demo.poster = clip.poster;
+      demo.width = clip.w;
+      demo.height = clip.h;
+      demo.src = clip.src;
+    }
+    dialog.setAttribute("aria-label", clip.label);
+    dialog.style.setProperty("--ar", clip.w / clip.h);
+    inline = from;
+    inline?.pause();
     dialog.showModal();
     lenis?.stop();
     demo.currentTime = 0;
@@ -109,12 +121,23 @@
     window.gsap && !reduce && gsap.fromTo(dialog, { autoAlpha: 0, y: 24, scale: 0.97 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.8, ease: "expo.out" });
   };
   const closeDemo = () => dialog.open && dialog.close();
-  $$("[data-open-demo]").forEach((b) => b.addEventListener("click", openDemo));
+  $$("[data-open-demo]").forEach((b) => {
+    const id = b.dataset.openDemo;
+    b.addEventListener("click", (e) => {
+      if (e.target.controls) return; // reduced motion gives inline videos their own controls
+      openDemo(id ? document.getElementById(id) : null);
+    });
+  });
   $("[data-close-demo]").addEventListener("click", closeDemo);
   dialog.addEventListener("click", (e) => e.target === dialog && closeDemo());
   dialog.addEventListener("close", () => {
     demo.pause();
     lenis?.start();
+    // let the observer resume the inline loop if it's still on screen
+    if (inline) {
+      vio.unobserve(inline);
+      vio.observe(inline);
+    }
   });
 
   // Accordion
@@ -417,6 +440,18 @@
         .from($("video", stage), { scale: 1.3, duration: 2, ease: "expo.out", clearProps: "transform" }, 0.1)
         .from($$(".demo__bar > *", el), { y: 18, autoAlpha: 0, duration: 1, ease: "power3.out", stagger: 0.1 }, 0.9);
     });
+
+    // Sim runs: each video opens out of a smaller frame
+    $$(".run__media").forEach((m) =>
+      gsap
+        .timeline({ scrollTrigger: { trigger: m, start: "top 85%", once: true } })
+        .fromTo(
+          m,
+          { clipPath: "inset(10% 8% 10% 8% round 28px)" },
+          { clipPath: "inset(0% 0% 0% 0% round 18px)", duration: 1.6, ease: "expo.inOut", clearProps: "clipPath" }
+        )
+        .from($("video", m), { scale: 1.25, duration: 2, ease: "expo.out", clearProps: "transform" }, 0.1)
+    );
 
     // Count-up stats
     $$("[data-count]").forEach((el) => {
