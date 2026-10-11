@@ -288,9 +288,10 @@
     if (reduce) {
       window.heroArm?.start();
     } else {
-      const split = SplitText.create(title, { type: "chars,lines", mask: "lines", linesClass: "line" });
+      // spans keep the name as one word in the DOM; reverting afterwards restores the plain <h1> for crawlers and readers
+      const split = SplitText.create(title, { type: "chars,lines", tag: "span", mask: "lines", linesClass: "line" });
       intro
-        .from(split.chars, { yPercent: 118, duration: 1.5, ease: "expo.out", stagger: 0.032 }, 0)
+        .from(split.chars, { yPercent: 118, duration: 1.5, ease: "expo.out", stagger: 0.032, onComplete: () => split.revert() }, 0)
         .from(".hero__frame", { autoAlpha: 0, scale: 1.015, duration: 1.4, ease: "expo.out" }, 0)
         .from("[data-intro]", { y: 16, autoAlpha: 0, duration: 1.1, ease: "power3.out", stagger: 0.06 }, 0.45)
         .from(nav, { autoAlpha: 0, duration: 1.2, ease: "power2.out" }, 0.4)
